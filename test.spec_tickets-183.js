@@ -50,7 +50,7 @@ describe('tickets-183: Экран расписания фильма - поиск
         });     
     });
 
-    it('should show error in place', function () {
+    it('should show sessions after filters reset', function () {
         return this.browser
         .waitForVisible('.message_inner .fakelink',15000)
         .click('.message_inner .fakelink')
