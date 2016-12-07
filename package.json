@@ -4,7 +4,7 @@
   "description": "First try to automate regression",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 30000 --slow 30000 test.spec*.js",
+    "test": "mocha --timeout 60000 --slow 60000 test.spec*.js",
     "lint": "./node_modules/.bin/eslint *.js"
   },
   "author": "",
