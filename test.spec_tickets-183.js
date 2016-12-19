@@ -6,28 +6,26 @@ const webdriver = require('webdriverio');
 
 
 describe('tickets-183: Экран расписания фильма - поиск', function () {
-    before(function () {
-        const browser = webdriver.remote({
+    let browser;
+
+    before(async function () {
+        browser = webdriver.remote({
             desiredCapabilities: {
                 browserName: 'chrome'
             }
         });
 
-        this.browser = browser
-        .init()
-        .url('https://widget.tickets.yandex.ru/w/events/44000?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
+        await browser.init();
+        await browser.url('https://widget.tickets.yandex.ru/w/events/44000?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
+    });
 
-        return this.browser;
-
-    }); 
-
-    it('should show search field', function () {
-        return this.browser
+    it('should show search field', async function () {
+        await browser
         .waitForVisible('.input_field',15000);
     });
 
-    it('should show searched place', function () {
-        return this.browser
+    it('should show searched place', async function () {
+        await browser
         .waitForVisible('.input_field',15000)
         .setValue('.input_field','Балтика')
         .waitForVisible('.session-item-caption_title')
@@ -38,26 +36,26 @@ describe('tickets-183: Экран расписания фильма - поиск
                 // } else {
                 //     console.log(res);
                 // }
-        });     
+        });
     });
 
-    it('should show error message in case place not found', function () {
-        return this.browser
+    it('should show error message in case place not found', async function () {
+        await browser
         .setValue('.input_field',' ')
         .waitForVisible('.message_title',15000)
         .getHTML('.message_title', true).then(res => {
             assert(((res.indexOf('Ничего не нашлось') !== -1)), 'Некорректный тест ошибки');
-        });     
+        });
     });
 
-    it('should show sessions after filters reset', function () {
-        return this.browser
+    it('should show sessions after filters reset', async function () {
+        await browser
         .waitForVisible('.message_inner .fakelink',15000)
         .click('.message_inner .fakelink')
-        .waitForVisible('.session-item-caption_title');     
+        .waitForVisible('.session-item-caption_title');
     });
 
     after(function() {
-        return this.browser.end();
+        return browser.end();
     });
 });

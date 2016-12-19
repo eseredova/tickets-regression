@@ -3,13 +3,19 @@
   "version": "0.0.1",
   "description": "First try to automate regression",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eseredova/tickets-regression.git"
+  },
   "scripts": {
-    "test": "mocha --timeout 60000 --slow 60000 test.spec*.js",
+    "test": "mocha --compilers=js:babel-register --timeout 60000 --slow 60000 test.spec*.js",
     "lint": "./node_modules/.bin/eslint *.js"
   },
-  "author": "",
+  "author": "Elena Seredova",
   "license": "MIT",
   "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-register": "^6.18.0",
     "eslint": "^3.11.1",
     "mocha": "^3.2.0",
     "pre-commit": "^1.1.3",
