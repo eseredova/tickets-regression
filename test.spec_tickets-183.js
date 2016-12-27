@@ -16,7 +16,8 @@ describe('tickets-183: Экран расписания фильма - поиск
         });
 
         await browser.init();
-        await browser.url('https://widget.tickets.yandex.ru/w/events/44000?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
+        //Вот бы научиться выбирать event_id из api
+        await browser.url('https://widget.tickets.yandex.ru/w/events/47686?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
     });
 
     it('should show search field', async function () {
