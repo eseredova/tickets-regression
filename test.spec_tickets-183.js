@@ -17,7 +17,7 @@ describe('tickets-183: Экран расписания фильма - поиск
 
         await browser.init();
         //Вот бы научиться выбирать event_id из api
-        await browser.url('https://widget.tickets.yandex.ru/w/events/47686?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
+        await browser.url('https://widget.tickets.yandex.ru/w/events/50433?regionId=213&clientKey=bb40c7f4-11ee-4f00-9804-18ee56565c87');
     });
 
     it('should show search field', async function () {
@@ -45,7 +45,7 @@ describe('tickets-183: Экран расписания фильма - поиск
         .setValue('.input_field',' ')
         .waitForVisible('.message_title',15000)
         .getHTML('.message_title', true).then(res => {
-            assert(((res.indexOf('Ничего не нашлось') !== -1)), 'Некорректный тест ошибки');
+            assert(((res.indexOf('Ничего не нашлось') !== -1)), 'Некорректный текст ошибки');
         });
     });
 
