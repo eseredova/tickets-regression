@@ -6,7 +6,7 @@ const webdriver = require('webdriverio');
 describe('tickets-183: Экран расписания фильма - поиск', function () {
     let browser;
 
-    before(async function() {
+    before(async function () {
         browser = webdriver.remote({
             waitforTimeout: '15000',
             desiredCapabilities: {
