@@ -3,8 +3,6 @@
 const assert = require('assert');
 const webdriver = require('webdriverio');
 
-
-
 describe('tickets-183: Экран расписания фильма - поиск', function () {
     let browser;
 
