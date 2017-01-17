@@ -22,8 +22,7 @@ describe('tickets-183: Экран расписания фильма - поиск
 
 
     it('should show search field', async function () {
-        await browser
-        .waitForVisible('.input_field');
+        await browser.waitForVisible('.input_field');
     });
 
     it('should show searched place', async function () {
@@ -36,19 +35,17 @@ describe('tickets-183: Экран расписания фильма - поиск
     });
 
     it('should show error message in case place not found', async function () {
-        await browser
-        .setValue('.input_field',' ')
-        .waitForVisible('.message_title')
-        .getHTML('.message_title', true).then(res => {
-            assert(((res.indexOf('Ничего не нашлось') !== -1)), 'Некорректный текст ошибки');
-        });
+        await browser.setValue('.input_field',' ');
+        await browser.waitForVisible('.message_title');
+
+        const res = await browser.getHTML('.message_title', true);
+        assert(((res.indexOf('Ничего не нашлось') !== -1)), 'Некорректный текст ошибки');
     });
 
     it('should show sessions after filters reset', async function () {
-        await browser
-        .waitForVisible('.message_inner .fakelink')
-        .click('.message_inner .fakelink')
-        .waitForVisible('.session-item-caption_title');
+        await browser.waitForVisible('.message_inner .fakelink');
+        await browser.click('.message_inner .fakelink');
+        await browser.waitForVisible('.session-item-caption_title');
     });
 
     after(function() {
