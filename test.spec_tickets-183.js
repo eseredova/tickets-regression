@@ -26,18 +26,12 @@ describe('tickets-183: Экран расписания фильма - поиск
     });
 
     it('should show searched place', async function () {
-        await browser
-        .waitForVisible('.input_field',15000)
-        .setValue('.input_field','Балтика')
-        .waitForVisible('.session-item-caption_title')
-        .getHTML('.session-item-caption_title', true).then(res => {
-            assert(((res.indexOf('Балтика') !== -1)), 'Нет искомого кинотеатра');
-                // if (res.indexOf('Химки') === -1) {
-                //     throw new Error ('Нет искомого кинотеатра');
-                // } else {
-                //     console.log(res);
-                // }
-        });
+        await browser.waitForVisible('.input_field', 15000);
+        await browser.setValue('.input_field', 'Балтика');
+        await browser.waitForVisible('.session-item-caption_title')
+        
+        const res = await browser.getHTML('.session-item-caption_title', true);
+        assert(((res.indexOf('Балтика') !== -1)), 'Нет искомого кинотеатра');
     });
 
     it('should show error message in case place not found', async function () {
